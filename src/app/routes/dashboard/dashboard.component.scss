@@ -1,0 +1,26 @@
+.player-wrapper {
+  max-width: 500px;
+  margin: auto;
+
+  video {
+      width: 100%;
+  }
+}
+ul {
+  padding: 0px;
+
+  li.playlist-item {
+      padding: 10px;
+      list-style: none;
+      background: #e6e6e6;
+      margin-bottom: 2px;
+      cursor: pointer;
+  }
+
+  li.playlist-item.selected {
+      background-color: #ccc;
+  }
+}
+.file-input {
+  display: none;
+}

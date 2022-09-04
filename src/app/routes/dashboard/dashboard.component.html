@@ -1,8 +1,6 @@
 <div class="player-wrapper">
 
-  <h3>Video Player with Controls</h3>
-
-  <vg-player>
+  <vg-player (onPlayerReady)="onPlayerReady($event)">
     <vg-overlay-play></vg-overlay-play>
     <vg-buffering></vg-buffering>
 
@@ -17,27 +15,40 @@
 
       <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
 
-      <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
 
-      <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
+
       <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
 
-      <vg-track-selector></vg-track-selector>
+
       <vg-mute></vg-mute>
       <vg-volume></vg-volume>
 
       <vg-fullscreen></vg-fullscreen>
     </vg-controls>
 
-    <video #media [vgMedia]="media" id="singleVideo" preload="auto">
-      <source src="http://static.videogular.com/assets/videos/videogular.mp4" type="video/mp4">
-      <source src="http://static.videogular.com/assets/videos/videogular.ogg" type="video/ogg">
-      <source src="http://static.videogular.com/assets/videos/videogular.webm" type="video/webm">
-
-      <track kind="subtitles" label="English" src="assets/subs/pale-blue-dot.vtt" srclang="en" default>
-      <track kind="subtitles" label="Español" src="assets/subs/pale-blue-dot-es.vtt" srclang="es">
-
+    <video #media [vgMedia]="media" [src]="currentItem.src" id="singleVideo" preload="auto" crossorigin>
     </video>
   </vg-player>
+
+  <ul>
+    <li class="playlist-item" *ngFor="let item of playlist; let $index = index"
+      (click)="onClickPlaylistItem(item, $index)" [class.selected]="item === currentItem">
+      {{ item.title }}
+    </li>
+  </ul>
+  <ul>
+    <input type="file" class="file-input"
+       (change)="onFileSelected($event)" #fileUpload>
+
+    <div class="file-upload">
+
+      {{fileName || "No file uploaded yet."}}
+
+        <button mat-mini-fab color="primary" class="upload-btn"
+          (click)="fileUpload.click()">
+            <mat-icon>attach_file</mat-icon>
+        </button>
+    </div>
+  </ul>
 
 </div>

@@ -28,8 +28,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 # Developper Journal
 
-  - 04/09/2022 
+  * 04/09/2022 
 
-    Created a new Angular 14 project and added the ng-matero UI environement.
+    - Created a new Angular 14 project and added the ng-matero UI environement.
     Used this example as a starter : https://www.freakyjolly.com/angular-video-player-using-videogular2-with-customized-controls/#Video_Player_with_Custom_Control_and_Icons and altered the code using this :https://videogular.github.io/ngx-videogular/docs/getting-started/how-videogular-works.html and this https://github.com/videogular/videogular2/issues/904.
     To resolve vsc debug error "npm not found used this : https://stackoverflow.com/questions/55817159/vscode-tasks-error-bin-bash-npm-command-not-found
+
+    - Added possibility to play local video, had some trouble because of xss security
